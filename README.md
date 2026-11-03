@@ -3,59 +3,62 @@
 A child-friendly Arabic Quran-story channel project for ages 2–4.
 
 ## Creative direction
-The channel is being developed as a genuine 2D animated story series, not a slideshow. Nour (cream rabbit) and Zuzu (golden bird) are fictional recurring hosts. The Qur'an remains the source of every story; child-friendly explanations must not add unsupported events or dialogue.
+A gentle 2D animated story series. Nour (cream rabbit) and Zuzu (golden bird) are fictional recurring hosts. The Qur'an remains the source of every story; child-friendly explanations must not add unsupported events or dialogue.
 
 - Production standard: `brand/ANIMATED-QURAN-STORY-STANDARD.md`
+- Brand guide: `brand/brand-guide.md`
+- Agent operating rules: `AGENTS.md`
 - Episode 01 source map: `episode-01-yunus/QURAN-SOURCE-MAP.md`
 
-## Current production status
-- Episode 01: Prophet Yunus and the Whale — narration and technical video candidates exist; not approved for publication.
-- Script: `episode-01-yunus/script-ar-en.md` (requires qualified religious review).
-- Source map: `episode-01-yunus/QURAN-SOURCE-MAP.md`.
-- Current scene art: `assets/scenes/scene-01.ppm` through `scene-06.ppm`.
-- Provisional Arabic TTS clips: `assets/audio/voice-*.mp3`.
-- Original assembled narration: `assets/audio/voiceover.wav`.
-- Variable-duration narration candidate: `assets/audio/voiceover-variable-candidate.wav`.
-- Variable-duration subtitles: `episode-01-yunus/subtitles-variable-candidate.srt`.
-- Variable-duration video candidate: `renders/episode-01-yunus-variable-candidate.mp4`.
-- Original draft and prior candidates remain preserved.
+## Episode 01 — Prophet Yunus and the Whale
 
-## Animation gap — important
-The current renders use illustrated still scenes and slow camera movement. They do NOT yet meet the target of animated characters that move and talk. The next production milestone is a character-animation prototype:
-- consistent rigged 2D characters for Nour and Zuzu;
-- body/face motion (walk/hop, turn, blink, ears/wings, gestures);
-- distinct speaker voices;
-- mouth shapes timed to each character's own dialogue;
-- environmental animation;
-- narrator sections where hosts react silently rather than fake lip-sync.
+**Status: technical candidate only — not approved for publication.**
 
-Do not call the episode fully animated until these features are visibly implemented and checked in playback.
+- Arabic/English script: `episode-01-yunus/script-ar-en.md` (requires qualified religious and fluent Arabic review).
+- Storyboard: `episode-01-yunus/storyboard-prompts.md`.
+- Candidate subtitles: `episode-01-yunus/subtitles-variable-candidate.srt`.
+- Current six scene assets: `assets/scenes/scene-01.ppm` through `scene-06.ppm`.
+- Variable-duration narration candidate: `assets/audio/voiceover-variable-candidate.wav` (62.88 seconds; four short quiet intervals of 0.50–0.61 seconds remain for listening review).
+- Compressed video candidate: `renders/episode-01-yunus-variable-candidate-compressed.mp4` (local render; 63.13 seconds, 1920×1080, H.264/AAC, 6.85 MiB; automated full-decode QC passes).
+- Existing animated technical test: `renders/episode-01-yunus-animated-test.mp4` (71.50 seconds; technical container QC passes).
+- QC report: `review/QC-VARIABLE-CANDIDATE.md`.
 
-## Technical tools
-- Narration generator: `tools/generate-voiceover.mjs` (Google Translate public TTS endpoint; network access required).
-- Audio assembly: `tools/assemble-voiceover.mjs`.
-- Video assembly and FFmpeg scripts are experimental candidates; preserve originals when testing.
-- FFmpeg is available through the CapCut installation on the production device.
+## Animation limitation
+Current scenes are illustrated stills with slow camera movement. The dialogue prototype demonstrates basic audio-energy-driven mouth movement and listener reactions, but it is not finished character animation or phoneme-accurate Arabic lip-sync. Do not describe the pilot as fully animated until consistent character motion and speaker-specific lip-sync are implemented and reviewed.
 
-## Review and release gates
-1. Qualified religious review of the source map, script, exact dua and translation.
-2. Fluent Arabic review of narration and pronunciation.
-3. Human review of complete playback, subtitles, character consistency, animation, audio and preschool suitability.
-4. Explicit owner approval before any public upload or channel setting changes.
+## Voice production
+- Voice profiles: `brand/voice-profiles.json`.
+- Validator: `npm run voices:validate`.
+- Azure candidate generator: `npm run voices:generate:azure`.
+- Azure candidate QC: `npm run voices:qc:azure`.
+- Azure Speech region is present on the production computer, but `AZURE_SPEECH_KEY` is not configured. Do not paste keys into chat or commit them. Follow `review/AZURE-SPEECH-SECURE-SETUP.md`.
+- The exact Qur'anic supplication in 21:87 must be checked by a qualified reviewer; synthetic TTS is not presumed correct recitation.
 
-No upload has been made. Public uploads and channel settings remain approval-gated.
+## Local quality checks
+Run from the project directory:
 
-## Character dialogue prototype and voice system
-- Dialogue render: `renders/dialogue-animation-prototype.mp4` (7.42 seconds, 960x540, 30 fps).
-- The prototype uses Zuzu's and Nour's existing Arabic dialogue clips, a 250 ms turn gap, three-state audio-energy-driven mouth movement, basic blinking and listener reactions.
-- Technical decode check passed. This is an engineering prototype, not final character animation or phoneme-accurate Arabic lip-sync.
-- Voice profiles: `brand/voice-profiles.json`; readiness report: `review/VOICE-SYSTEM-READINESS.md`.
-- Local voice audit found only English Windows voices. The legacy one-voice generator is now blocked by default; it requires the explicit `--allow-legacy-single-voice` flag to run.
-- Run `node tools/validate-voice-profiles.mjs` to check voice readiness. It currently reports NOT READY until distinct Arabic-capable provider voice IDs are configured.
+```cmd
+npm ci
+npm run voices:validate
+npm run check:syntax
+npm run video:qc
+npm run video:qc:variable
+npm run qc:audio
+```
 
-## Arabic voice provider integration
-- Azure AI Speech selected as the first provider; official Arabic neural voice IDs are assigned to Narrator, Nour and Zuzu in `brand/voice-profiles.json`.
-- Generator: `tools/generate-azure-voice-candidates.mjs`. It writes to a separate candidate folder and never overwrites the existing provisional recordings.
-- Voice profile validation and generator syntax checks pass; dry run confirms all ten clip assignments.
-- Audio generation is waiting for Azure Speech resource credentials (`AZURE_SPEECH_KEY`, `AZURE_SPEECH_REGION`) to be configured securely on the production device.
-- Voice samples must pass fluent Arabic review before any candidate is promoted to the episode.
+The checks verify technical properties only. They do not approve religious accuracy, Arabic pronunciation, child suitability, visual quality, or release readiness.
+
+## Release gates
+1. Qualified reviewer verifies source map, script, exact dua, context and translation.
+2. Fluent Arabic reviewer checks narration, pronunciation and subtitles.
+3. Human listens to the complete audio and watches the full video with subtitles.
+4. Review character consistency, visual quality, preschool suitability and asset licensing.
+5. Owner explicitly approves any public release.
+
+**Never upload, schedule, publish, or change public channel settings without an explicit owner command in the current conversation.**
+
+## Repository
+- Local Git repository: `main`; latest commits are recorded in local Git history.
+- Generated MP4 renders and intermediate frame sequences are intentionally excluded from Git; keep them locally for review.
+- GitHub remote repository has not yet been created or connected.
+- GitHub Actions workflow: `.github/workflows/quality.yml`.
