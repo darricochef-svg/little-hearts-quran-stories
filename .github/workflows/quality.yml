@@ -20,6 +20,8 @@ jobs:
       - run: npm ci
       - name: Validate Arabic voice profiles
         run: npm run voices:validate
+      - name: Validate bilingual subtitle structure and timing
+        run: npm run subtitles:validate
       - name: Check JavaScript syntax
         shell: bash
         run: |

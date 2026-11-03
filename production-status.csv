@@ -1,10 +1,10 @@
 stage,status,blocker_or_next_action,public_action
 Project scaffold,complete,Project folders and production files are in place,no
-Git repository,remote_main_pushed_verified,Local main is clean at last verification; origin/main confirmed at 912089bdc7c8daf9d595d4111ff69ba990dc91b4; repository visibility not checked,no
+Git repository,remote_main_pushed_verified,origin/main verified against local HEAD after push; repository visibility not checked,no
 Agent workflow,configured,AGENTS.md defines specialist roles and strict religious and publishing gates; no extra paid agents installed,no
 Arabic/English script,draft,Qualified religious review and fluent Arabic review required,no
 Storyboard prompts,complete,Current six-scene structure still needs human visual review,no
-Subtitles,variable_timing_candidate,Retimed candidate aligned to six scene-audio durations; verify wording and readability,no
+Subtitles,automated_structure_pass,Six bilingual cues pass sequential timing, non-overlap, Arabic/English presence and 63.13-second endpoint checks; human wording/readability review required,no
 Scene images,refreshed_draft,Current six scene assets need human visual review,no
 Scene backup,complete,Previous six scene assets remain preserved in backup folder,no
 Arabic narration,variable_timing_candidate,Variable candidate removes long 5–6 second gaps; four short 0.50–0.61 second quiet intervals remain; listen and review Arabic,no

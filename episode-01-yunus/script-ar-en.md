@@ -17,8 +17,8 @@ English subtitle: “Look, Nour! The fish are so beautiful!” / “Wow! The sea
 
 ## Scene 3 — 0:12.80–0:26.38
 Visual: A large whale silhouette glides through blue water. Do not depict Prophet Yunus.
-Narrator (Arabic): والآن، لنتعلّم قصة النبي يونس عليه السلام. كان يونس نبيًّا من أنبياء الله. وفي قصة يونس، ابتلعه الحوت بأمر الله.
-English subtitle: Now, let's learn the story of Prophet Yunus, peace be upon him. Yunus was one of Allah's prophets. In his story, the whale swallowed him by Allah's command.
+Narrator (Arabic): والآن، لنتعلّم قصة النبي يونس عليه السلام. كان يونس نبيًّا من أنبياء الله. وفي قصة يونس، ابتلعه الحوت.
+English subtitle: Now, let's learn the story of Prophet Yunus, peace be upon him. Yunus was one of Allah's prophets. In his story, the fish swallowed him.
 
 ## Scene 4 — 0:26.43–0:41.01
 Visual: Gentle underwater darkness, distant whale silhouette, soft rays and bubbles. No frightening imagery and no prophet depiction.
