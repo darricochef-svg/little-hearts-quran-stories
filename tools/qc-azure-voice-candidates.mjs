@@ -37,7 +37,7 @@ for (const [clip, voice] of Object.entries(expected)) {
   const item = entries.find(x => String(x.clip ?? x.id ?? x.clipId).replace(/^voice-/, '') === clip);
   if (!item) { fail.push(`Clip ${clip}: manifest entry missing.`); continue; }
   check(item.voiceId === voice, `Clip ${clip}: expected ${voice}, got ${item.voiceId ?? 'missing'}.`);
-  const file = item.file ? path.resolve(dir, item.file) : path.join(dir, `voice-${clip}.mp3`);
+  const file = item.file ? path.resolve(root, item.file) : path.join(dir, `voice-${clip}.mp3`);
   if (!fs.existsSync(file)) { fail.push(`Clip ${clip}: audio file missing.`); continue; }
   const stat = fs.statSync(file);
   check(stat.size > 1000, `Clip ${clip}: file size ${stat.size} bytes.`);
