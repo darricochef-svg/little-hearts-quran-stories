@@ -1,0 +1,13 @@
+file 'C:/Users/vitag/Documents/Little-Hearts-Quran-Stories/assets/scenes/scene-01.ppm'
+duration 12
+file 'C:/Users/vitag/Documents/Little-Hearts-Quran-Stories/assets/scenes/scene-02.ppm'
+duration 12
+file 'C:/Users/vitag/Documents/Little-Hearts-Quran-Stories/assets/scenes/scene-03.ppm'
+duration 12
+file 'C:/Users/vitag/Documents/Little-Hearts-Quran-Stories/assets/scenes/scene-04.ppm'
+duration 12
+file 'C:/Users/vitag/Documents/Little-Hearts-Quran-Stories/assets/scenes/scene-05.ppm'
+duration 12
+file 'C:/Users/vitag/Documents/Little-Hearts-Quran-Stories/assets/scenes/scene-06.ppm'
+duration 12
+file 'C:/Users/vitag/Documents/Little-Hearts-Quran-Stories/assets/scenes/scene-06.ppm'

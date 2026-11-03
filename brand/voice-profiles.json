@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "language": "ar",
+  "status": "provider_configured_credentials_required",
+  "policy": "Do not synthesize production dialogue until provider credentials are available and each sample passes fluent Arabic human review. Never claim different voices based only on pitch or speed changes.",
+  "profiles": [
+    {
+      "id": "narrator",
+      "displayName": "Narrator",
+      "role": "story_narration",
+      "locale": "ar-SA",
+      "provider": "azure",
+      "voiceId": "ar-SA-HamedNeural",
+      "voiceDescription": "Calm, clear masculine Saudi Arabic neural voice; measured pace for story narration."
+    },
+    {
+      "id": "nour",
+      "displayName": "Nour",
+      "role": "host",
+      "locale": "ar-SA",
+      "provider": "azure",
+      "voiceId": "ar-SA-ZariyahNeural",
+      "voiceDescription": "Warm, gentle feminine Saudi Arabic neural voice; friendly and clear."
+    },
+    {
+      "id": "zuzu",
+      "displayName": "Zuzu",
+      "role": "host",
+      "locale": "ar-JO",
+      "provider": "azure",
+      "voiceId": "ar-JO-TaimNeural",
+      "voiceDescription": "Distinct youthful-sounding masculine Jordanian Arabic neural voice; lively but not exaggerated. Confirm child-friendly suitability by human review."
+    }
+  ],
+  "clipAssignments": {
+    "01": "narrator",
+    "02a": "zuzu",
+    "02b": "nour",
+    "03": "narrator",
+    "04a": "narrator",
+    "04b": "narrator",
+    "05": "narrator",
+    "06a": "nour",
+    "06b": "zuzu",
+    "06c": "nour"
+  }
+}

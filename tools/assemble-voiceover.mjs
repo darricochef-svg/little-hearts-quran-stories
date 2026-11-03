@@ -1,0 +1,20 @@
+import { spawnSync } from 'node:child_process';
+import path from 'node:path';
+const root = 'C:/Users/vitag/Documents/Little-Hearts-Quran-Stories';
+const dir = path.join(root, 'assets', 'audio');
+const ids = ['01','02a','02b','03','04a','04b','05','06a','06b','06c'];
+const groups = [[0],[1,2],[3],[4,5],[6],[7,8,9]];
+const ffmpeg = path.join(process.env.LOCALAPPDATA, 'CapCut', 'Apps', '8.5.0.3590', 'ffmpeg.exe');
+const args = ['-y','-hide_banner','-loglevel','warning'];
+for (const id of ids) args.push('-i', path.join(dir, 'voice-' + id + '.mp3'));
+const filters = [];
+groups.forEach((group, i) => {
+ const joined = group.map(n => '[' + n + ':a]').join('') + 'concat=n=' + group.length + ':v=0:a=1';
+ filters.push(joined + ',apad=whole_dur=12,atrim=duration=12[s' + i + ']');
+});
+filters.push('[s0][s1][s2][s3][s4][s5]concat=n=6:v=0:a=1[out]');
+args.push('-filter_complex', filters.join(';'),'-map','[out]','-ar','44100','-ac','1','-c:a','pcm_s16le',path.join(dir,'voiceover.wav'));
+console.log('Assembling six 10-second narration sections with shorter child-friendly pauses');
+const result = spawnSync(ffmpeg,args,{stdio:'inherit',windowsHide:true});
+if (result.error || result.status !== 0) process.exit(result.status || 1);
+console.log('Voiceover aligned to the six-scene 72-second draft.');

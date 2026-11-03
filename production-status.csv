@@ -1,0 +1,20 @@
+stage,status,blocker_or_next_action,public_action
+Project scaffold,complete,Project folders and production files created,no
+Arabic/English script,draft,Qualified religious and fluent Arabic review required,no
+Storyboard prompts,complete,Current six-scene story structure needs expert review,no
+Subtitles,timing_aligned_draft,Retimed six bilingual subtitle blocks to the six 12-second scene slots; verify readability and exact wording,no
+Scene images,refreshed_draft,Replaced simple shapes with layered color backgrounds clouds waves detailed rabbit and bird features and fish/sea-creature silhouettes; visual quality still needs human review,no
+Scene backup,complete,Previous six PPM assets preserved in assets/scenes/backup-before-art-refresh,no
+Arabic narration,provisional,10 Arabic TTS clips assembled; review pronunciation pacing and voice quality by listening,no
+FFmpeg,available_via_CapCut,CapCut-bundled FFmpeg verified,no
+Video render,technical_draft,Original 1920x1080 MP4 preserved; technical streams passed,no
+Animated motion test,rerendered_after_subtitle_timing_update,Separate 1920x1080 30fps 71.5-second MP4 rebuilt with updated subtitle timings; confirm final technical QC and inspect full playback,no
+Automated technical QC,pass_container_checks,Updated animated test passed 9 automated file/container checks; human review still required,no
+Audio quality check,needs_improvement,Silence detection found long quiet gaps around 5–6 seconds in multiple narration sections; revise pacing/padding and listen to full Arabic track,no
+Visual quality check,pending,Review refreshed scenes on device; still stylized 2D art with slow zoom not full 3D animation,no
+Religious review,pending,Verify Qur'anic wording and translation with qualified reviewer,no
+YouTube authorization,not_started,Channel account/API authorization still required,no
+Upload/publication,approval_required,Do not upload or change public channel settings without explicit command,yes
+Character dialogue prototype,technical_prototype_pass,7.42s dialogue render verified; three-state audio-energy mouth motion and basic reactions; visual quality remains placeholder,no
+Character voice system,blocked_provider_required,Voice profiles and validator created; local audit found English-only voices; configure distinct Arabic provider voice IDs before production synthesis,no
+Arabic voice provider integration,adapter_ready_credentials_required,Azure AI Speech selected; three distinct Arabic neural voice IDs mapped; generator dry-run and profile validation pass; awaiting secure key and region configuration,no

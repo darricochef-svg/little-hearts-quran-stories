@@ -1,0 +1,18 @@
+{
+  "name": "little-hearts-quran-stories",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Production toolkit and editorial source for Little Hearts, Quran Stories.",
+  "type": "module",
+  "scripts": {
+    "voices:validate": "node tools/validate-voice-profiles.mjs",
+    "voices:generate:azure": "node tools/generate-azure-voice-candidates.mjs",
+    "voices:qc:azure": "node tools/qc-azure-voice-candidates.mjs",
+    "video:build": "node tools/build-video.mjs",
+    "video:qc": "node tools/automated-qc.mjs",
+    "video:qc:animated": "node tools/automated-qc-animated.mjs",
+    "video:qc:variable": "node tools/qc-variable-candidate.mjs",
+    "qc:audio": "node tools/check-audio-candidate.mjs",
+    "check:syntax": "powershell.exe -NoProfile -File tools/check-syntax.ps1"
+  }
+}

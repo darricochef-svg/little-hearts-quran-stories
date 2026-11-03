@@ -1,0 +1,30 @@
+import fs from "node:fs";
+import path from "node:path";
+import { spawnSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
+
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),"..");
+const sceneDir=path.join(root,"assets","scenes");
+const audio=path.join(root,"assets","audio","voiceover-variable-candidate.wav");
+const subtitles=path.join(root,"episode-01-yunus","subtitles-variable-candidate.srt");
+const output=path.join(root,"renders","episode-01-yunus-variable-candidate.mp4");
+const durations=[5.86,6.84,13.58,14.58,6.50,15.52], fps=30;
+const scenes=fs.readdirSync(sceneDir).filter(f=>/\.(png|jpe?g|webp|ppm)$/i.test(f)).sort((a,b)=>a.localeCompare(b,undefined,{numeric:true})).map(f=>path.join(sceneDir,f));
+if(scenes.length!==6) throw new Error("Expected exactly six scene images; found "+scenes.length);
+const ffmpeg=path.join(process.env.LOCALAPPDATA||"","CapCut","Apps","8.5.0.3590","ffmpeg.exe");
+if(!fs.existsSync(audio)||!fs.existsSync(subtitles)||!fs.existsSync(ffmpeg)) throw new Error("Candidate audio, subtitles, or FFmpeg missing.");
+const args=["-y","-hide_banner","-loglevel","warning"];
+scenes.forEach((s,i)=>args.push("-loop","1","-framerate",String(fps),"-t",String(durations[i]),"-i",s));
+const audioIndex=scenes.length; args.push("-i",audio);
+const subIndex=scenes.length+1; args.push("-i",subtitles);
+const filters=[];
+scenes.forEach((_,i)=>{
+ const frames=Math.round(durations[i]*fps);
+ filters.push(`[${i}:v]scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,zoompan=z='min(zoom+0.00018,1.065)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=${frames}:s=1920x1080:fps=${fps},format=yuv420p[v${i}]`);
+});
+filters.push(scenes.map((_,i)=>`[v${i}]`).join("")+"concat=n=6:v=1:a=0[vout]");
+args.push("-filter_complex",filters.join(";"),"-map","[vout]","-map",audioIndex+":a:0","-map",subIndex+":0","-c:a","aac","-b:a","192k","-c:s","mov_text","-c:v","mpeg4","-q:v","3","-movflags","+faststart",output);
+console.log("Rendering separate variable-duration candidate; originals remain untouched.");
+const r=spawnSync(ffmpeg,args,{stdio:"inherit",windowsHide:true});
+if(r.error||r.status!==0) process.exit(r.status||1);
+console.log("Candidate:",output);

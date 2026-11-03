@@ -1,0 +1,33 @@
+# Dependencies and local build output
+node_modules/
+.next/
+dist/
+build/
+.cache/
+
+# Secrets and local credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*credentials*
+*token*
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Generated intermediate frames and raw media
+review/*-ppm/
+review/character-animation-prototype/
+assets/scenes/backup-before-art-refresh/
+assets/audio/azure-candidates/
+*.raw
+*.tmp
+*.log
+
+# Large generated video exports are retained locally; commit only after explicit asset review
+renders/*.mp4
