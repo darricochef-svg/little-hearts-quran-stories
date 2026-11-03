@@ -1,39 +1,43 @@
 # Production report — 4 November 2026
 
 ## Repository and workflow
-- Located the production project at `Documents/Little-Hearts-Quran-Stories`.
-- Initialized local Git repository on `main`; initial commit: `2d3a1f9`.
-- Added `AGENTS.md` with specialist role instructions and non-negotiable Quran accuracy, credential, and public-release rules.
-- Added `.gitignore` to exclude secrets, local dependencies, generated intermediate frames, and rendered MP4 files.
-- Rebuilt minimal package scripts and synchronized the lockfile.
-- Added GitHub Actions workflow for voice profile validation and JavaScript syntax checks.
-- GitHub remote is not created or pushed yet. GitHub CLI installation/authentication remains pending; the connected GitHub integration currently exposes no repositories and no repository-creation action.
+- Project path: `Documents/Little-Hearts-Quran-Stories`.
+- Git repository is on branch `main`; local working tree was clean before this documentation sync.
+- Remote `origin/main` was independently verified with `git ls-remote` at commit `912089bdc7c8daf9d595d4111ff69ba990dc91b4` (`Update-project-handoff-readme`).
+- Repository visibility was not checked; do not assume it is private.
+- GitHub integration content writes previously returned HTTP 403, so this sync is being performed from the authorized Windows workstation.
+- GitHub Actions status for the latest push has not been independently verified.
 
-## Verified checks
-- `npm install --package-lock-only --ignore-scripts`: PASS; zero reported vulnerabilities.
-- `npm run voices:validate`: PASS; narrator, Nour and Zuzu profiles are configured with distinct Arabic voice IDs.
-- `npm run check:syntax`: PASS; all 21 project JavaScript modules passed `node --check`.
-- Existing animated test: PASS; 71.50 seconds, 1920×1080, video/audio/subtitle streams detected, 18.55 MB.
-- New compressed variable-duration candidate: PASS; 63.13 seconds, 1920×1080 H.264, AAC audio, embedded subtitles, 6.85 MiB; FFmpeg fully decoded the file.
-- AMD H.264 encoder test: PASS.
-- Variable narration assembly: PASS; six scene audio segments combined to 62.88 seconds.
+## Checks run on 4 November 2026
+- `npm ci`: PASS; 1 package audited, 0 vulnerabilities.
+- `npm run voices:validate`: PASS; all profiles configured with distinct Arabic voices.
+- `npm run check:syntax`: PASS; all 21 JavaScript modules passed syntax checks.
+- `npm run video:qc:variable`: PASS; candidate exists, is below 500 MB, fully decodes, and contains H.264 video, AAC audio and embedded subtitles.
+- Candidate details: 63.13 seconds, 1920×1080, 30 fps, 6.85 MiB.
+- `npm run qc:audio`: PASS as a diagnostic run; it identified four quiet intervals (0.505, 0.526, 0.538 and 0.610 seconds). This is not a human listening approval.
+- Audio candidate duration: 62.88 seconds; mean volume -18.0 dB, peak -3.3 dB.
 
-## Defects found and corrected
-- Fixed a syntax error in `tools/qc-variable-candidate.mjs` that prevented the candidate QC script from running.
-- Fixed the variable render's zoompan frame multiplier. It was producing an extremely oversized/long render; the corrected filter emits one output frame per input frame.
-- Added controlled H.264 bitrate output. The new candidate is 6.85 MiB; the old 5.5 GB candidate was preserved and not overwritten.
+## Production-document synchronization
+- Updated the six script scene headings to match the variable candidate subtitle timing: 0:00–0:05.86; 0:05.91–0:12.75; 0:12.80–0:26.38; 0:26.43–0:41.01; 0:41.06–0:47.56; 0:47.61–1:03.13.
+- Updated the script's assembled-cut duration to 63.13 seconds.
+- Production tracker now records the verified remote main push rather than remote-pending status.
 
-## Remaining blockers — pilot is not release-ready
-- The variable narration track has four quiet intervals of approximately 0.50–0.61 seconds. These may be scene pauses, but a human must listen and confirm the cadence is natural.
-- The previous tightened track had 5–6 second gaps; the new variable candidate removes those long gaps.
-- Azure region is present in the Windows environment, but `AZURE_SPEECH_KEY` is not configured. No key was printed or requested in chat.
-- Existing visuals are stylized illustrated still scenes with camera movement, not full character animation or phoneme-accurate lip-sync.
-- Qualified Quran/religious review and fluent Arabic pronunciation review remain outstanding, especially the exact dua from Qur'an 21:87.
-- Full playback, subtitle readability, child suitability, and asset licensing review remain outstanding.
+## Defects previously corrected
+- Fixed a syntax error in `tools/qc-variable-candidate.mjs`.
+- Fixed the variable render zoompan frame multiplier so the filter emits one output frame per input frame.
+- Added controlled H.264 bitrate output. The compressed candidate is 6.85 MiB; the older large render was preserved rather than overwritten.
 
-## Publishing
+## Release blockers — episode remains DRAFT / NOT APPROVED
+- Qualified Quran/religious review is still required for the source map, script, exact dua from Qur'an 21:87, and translation.
+- Fluent Arabic review of pronunciation, narration and subtitles remains required.
+- Human listening review is required for cadence and the four quiet intervals.
+- Human review remains required for visuals, child suitability, subtitle readability and asset licensing.
+- Azure Speech region is present in the Windows environment, but `AZURE_SPEECH_KEY` is not configured. Never paste secrets into chat or commit them.
+- Current visuals are illustrated still scenes with camera movement, not full character animation or phoneme-accurate lip-sync.
+
+## Publishing controls
 - Episode 01 remains DRAFT.
 - Publishing calendar has no target dates.
-- No video was uploaded, scheduled, or published.
+- No video was uploaded, scheduled or published.
 - No public channel settings were changed.
-- Any public posting remains gated by explicit owner command.
+- Any public posting remains gated by a direct, explicit owner command.

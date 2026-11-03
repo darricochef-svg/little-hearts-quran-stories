@@ -1,6 +1,6 @@
 stage,status,blocker_or_next_action,public_action
 Project scaffold,complete,Project folders and production files are in place,no
-Git repository,local_committed_remote_pending,Local main branch committed; create private GitHub remote and push after GitHub CLI authentication,no
+Git repository,remote_main_pushed_verified,Local main is clean at last verification; origin/main confirmed at 912089bdc7c8daf9d595d4111ff69ba990dc91b4; repository visibility not checked,no
 Agent workflow,configured,AGENTS.md defines specialist roles and strict religious and publishing gates; no extra paid agents installed,no
 Arabic/English script,draft,Qualified religious review and fluent Arabic review required,no
 Storyboard prompts,complete,Current six-scene structure still needs human visual review,no
