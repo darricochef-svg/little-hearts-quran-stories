@@ -11,6 +11,7 @@
     "voices:qc:azure": "node tools/qc-azure-voice-candidates.mjs",
     "scenes:validate": "node tools/validate-scenes.mjs",
     "video:build:visual-review": "node tools/build-visual-review.mjs",
+    "video:build:motion-animatic": "node tools/build-motion-animatic.mjs",
     "video:build": "node tools/build-video.mjs",
     "video:qc": "node tools/automated-qc.mjs",
     "video:qc:animated": "node tools/automated-qc-animated.mjs",

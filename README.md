@@ -22,6 +22,7 @@ A gentle 2D animated story series. Nour (cream rabbit) and Zuzu (golden bird) ar
 - Candidate narration: assets/audio/voiceover-variable-candidate.wav (62.88 seconds; four short quiet intervals of 0.50–0.61 seconds remain for listening review).
 - Old compressed video candidate: renders/episode-01-yunus-variable-candidate-compressed.mp4 (63.13 seconds, 1920×1080, H.264/AAC; contains earlier visuals and is NOT the current approved cut).
 - Silent visual review preview: renders/episode-01-yunus-visual-review-only.mp4 (18 seconds; no narration or subtitles; review aid only).
+- Silent motion animatic: renders/episode-01-yunus-motion-animatic-only.mp4 (27 seconds; 1080p/24 fps; camera drift and crossfades over still scenes; no audio; review aid only). See review/MOTION-ANIMATIC-STATUS.md.
 - QC report: review/QC-VARIABLE-CANDIDATE.md.
 
 ## Animation limitation
@@ -54,6 +55,7 @@ To create a silent visual-only preview of the current six scenes (no narration o
 
 ```cmd
 npm run video:build:visual-review
+npm run video:build:motion-animatic
 ```
 
 The preview is saved locally as renders/episode-01-yunus-visual-review-only.mp4 and is excluded from Git.
