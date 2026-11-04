@@ -1,9 +1,10 @@
 stage,status,blocker_or_next_action,public_action
 Project scaffold,complete,Project folders and production files are in place,no
-Git repository,remote_main_pushed_verified,Local HEAD must be compared to origin/main after this change,no
+Git repository,remote_main_pushed_verified,Verify local HEAD against origin/main after each change,no
 Agent workflow,configured,AGENTS.md defines specialist roles and strict religious and publishing gates; no extra paid agents installed,no
-Arabic/English script,draft,Qualified religious review and fluent Arabic review required,no
-Storyboard prompts,updated_draft,Revised symbolic direction now implemented in scene generator; human review still required,no
+Arabic/English script,draft_aligned_to_current_visuals,Qualified religious review and fluent Arabic review required; audio candidates are stale,no
+Storyboard prompts,updated_draft,Descriptions now match neutral regenerated scene assets; human review still required,no
+Human review pack,created,Record reviewer role date exact version decision and concrete notes; no human approvals recorded,no
 Subtitles,automated_structure_pass,Six bilingual cues pass timing and structure; human wording/readability review required,no
 Scene images,refreshed_draft,Scenes 03–05 regenerated without whale or literal swallowing; 9 technical checks pass; human visual and child-suitability review required,no
 Scene backup,complete,Original six scene PPMs preserved in assets/scenes/backup-before-art-refresh,no
@@ -11,9 +12,9 @@ Visual-only preview,technical_pass,18-second silent H264 1080p preview fully dec
 Arabic narration,stale_candidate,Existing ten Azure clips predate revised script; do not use for release; regenerate after secure Azure key setup,no
 FFmpeg,available_via_winget,FFmpeg 9.0.2 and ffprobe verified via winget path,no
 Video render,old_candidate_preserved,63.13-second master candidate remains unchanged and contains old visual; rebuild only after audio and visual approvals,no
-Automated technical QC,pass_local_checks,Scene QC 9/9; subtitle/voice validators and all JS syntax pass; GitHub Actions run 41756948802 passed on commit eed3500,no
+Automated technical QC,pass_local_checks,Scene QC 9/9; subtitle/voice validators and JS syntax passed previously; rerun after documentation update,no
 Audio quality check,short_pauses_remain,Four quiet intervals 0.50–0.61 seconds require human listening; do not auto-trim,no
-Visual quality check,review_pending,New symbolic stills spot-checked; qualified visual and child-suitability approval still required,no
+Visual quality check,review_pending,New symbolic stills require human visual and child-suitability approval,no
 Religious review,pending,Qualified reviewer must verify source map script exact dua and translation,no
 Azure Speech credentials,blocked_key_missing,AZURE_SPEECH_REGION set but AZURE_SPEECH_KEY missing; configure securely on workstation only,no
 YouTube authorization,not_started,Not needed for private production review,no
