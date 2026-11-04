@@ -3,9 +3,9 @@
 ## Repository and workflow
 - Project: `darricochef-svg/little-hearts-quran-stories`.
 - Workstation: Windows checkout at `Documents/Little-Hearts-Quran-Stories`.
-- Branch: `main`; latest previously verified commit: `1562f3f74fb91fda71d7aab3fedf0715df945f1b`.
+- Branch: `main`; latest verified visual revision commit: `eed35008fbe41296ba642d05f69ba68ec4c4abf1`.
 - Use the authorized local Git remote for pushes; verify local HEAD against `git ls-remote origin refs/heads/main`.
-- GitHub Actions run #7 passed for commit `71c209d`; this newer commit must receive its own CI run after push.
+- GitHub Actions run #41756948802 passed for commit `eed3500`, including the new scene-asset validation step.
 - No upload, scheduling, public publishing, or public channel setting changes.
 
 ## Technical fixes completed
