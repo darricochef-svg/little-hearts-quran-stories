@@ -1,15 +1,18 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const out = path.resolve("C:/Users/vitag/Documents/Little-Hearts-Quran-Stories/assets/scenes");
+import { fileURLToPath } from "node:url";
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const out = path.join(root, "assets", "scenes");
 fs.mkdirSync(out, { recursive: true });
 const W = 960, H = 540;
 const scenes = [
   { sky:[194,235,239], sea:[101,190,203], land:[250,225,171], deep:[48,135,164], sun:[255,220,130], title:"A quiet shore" },
   { sky:[46,135,177], sea:[22,103,153], land:[103,203,207], deep:[12,68,119], sun:[255,218,125], title:"Beneath the waves" },
-  { sky:[88,187,209], sea:[33,119,157], land:[201,233,222], deep:[27,91,130], sun:[255,231,155], title:"A great sea creature" },
-  { sky:[17,43,78], sea:[25,75,113], land:[88,139,170], deep:[10,38,70], sun:[225,237,242], title:"In the deep darkness" },
-  { sky:[249,218,157], sea:[63,156,179], land:[255,241,204], deep:[38,112,145], sun:[255,190,106], title:"A new morning" },
+  { sky:[88,187,209], sea:[33,119,157], land:[201,233,222], deep:[27,91,130], sun:[255,231,155], title:"A quiet open sea" },
+  { sky:[17,43,78], sea:[25,75,113], land:[88,139,170], deep:[10,38,70], sun:[225,237,242], title:"A symbolic darknesses scene" },
+  { sky:[249,218,157], sea:[63,156,179], land:[255,241,204], deep:[38,112,145], sun:[255,190,106], title:"A peaceful morning sea" },
   { sky:[185,229,215], sea:[110,183,157], land:[222,238,197], deep:[55,135,127], sun:[255,224,136], title:"A peaceful garden" }
 ];
 
@@ -109,22 +112,27 @@ function make(scene, index) {
     line(80,500,100,430,4,[36,139,123]);line(100,430,125,465,4,[36,139,123]);
     line(835,515,850,442,4,[36,139,123]);line(850,442,877,474,4,[36,139,123]);
   } else if(index===2) {
-    // Stylized friendly sea creature, not a depiction of a sacred figure.
-    ellipse(505,338,198,112,[45,111,145]); ellipse(535,371,130,54,[188,226,226]);
-    ellipse(657,303,82,65,[45,111,145]); ellipse(678,287,7,7,[255,255,245]); ellipse(680,287,3,3,[34,52,66]);
-    ellipse(330,333,78,31,[45,111,145]); ellipse(340,326,30,13,[70,145,168]);
-    for(let k=0;k<7;k++) ellipse(390+k*34,421+(k%2)*8,4,7,[183,230,232]);
-    fish(225,300,.8,[255,213,99]); fish(770,386,.65,[255,171,120]);
+    // Neutral open sea only; no animal, mouth, swallowing or literal event.
+    waves(380,[183,231,235],7,18);
+    waves(435,[160,218,228],5,42);
+    for(let k=0;k<9;k++) ellipse(120+k*88,475+(k%3)*9,3,5,[208,241,240]);
   } else if(index===3) {
-    stars(index);
-    ellipse(500,350,200,118,[18,59,92]); ellipse(540,384,130,48,[35,91,117]);
-    for(let k=0;k<8;k++) ellipse(200+k*80,270+(k%3)*39,3,3,[184,222,240]);
-    ellipse(780,220,24,24,[47,82,113]);
+    // Abstract layered darkness/light metaphor only; no stars or living forms.
+    rect(0,0,W,H,[9,31,57]);
+    ellipse(480,270,410,250,[15,48,78]);
+    ellipse(480,270,270,160,[22,64,91]);
+    ellipse(480,270,135,78,[31,84,109]);
+    for(let k=0;k<7;k++) {
+      const x=170+k*105;
+      line(x,0,x+65,230,2,[63,111,140]);
+    }
+    for(let k=0;k<5;k++) waves(420+k*25,[35,82,112],3,k*23);
   } else if(index===4) {
-    ellipse(500,338,180,100,[48,117,143]); ellipse(570,375,112,42,[198,231,221]);
-    fish(270,280,.85,[255,176,113]); fish(720,325,.7,[255,215,102]);
-    ellipse(785,433,45,17,[255,255,246]);
-    for(let k=0;k<5;k++) ellipse(170+k*150,460-(k%2)*16,8,4,[255,255,242]);
+    // Calm daylight over open water; no creature or invented rescue sequence.
+    waves(350,[214,239,228],6,25);
+    waves(410,[173,222,221],4,52);
+    ellipse(480,470,220,18,[255,248,220]);
+    for(let k=0;k<6;k++) ellipse(170+k*130,490+(k%2)*8,5,3,[255,255,242]);
   } else {
     rabbit(280,362,1.05); bird(408,390,.95);
     ellipse(665,440,110,38,[61,137,124]);

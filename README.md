@@ -40,11 +40,21 @@ Run from the project directory:
 ```cmd
 npm ci
 npm run voices:validate
+npm run subtitles:validate
+npm run scenes:validate
 npm run check:syntax
 npm run video:qc
 npm run video:qc:variable
 npm run qc:audio
 ```
+
+To create a silent visual-only preview of the current six scenes (no narration or subtitles):
+
+```cmd
+npm run video:build:visual-review
+```
+
+The preview is saved locally as `renders/episode-01-yunus-visual-review-only.mp4` and is excluded from Git.
 
 The checks verify technical properties only. They do not approve religious accuracy, Arabic pronunciation, child suitability, visual quality, or release readiness.
 
@@ -60,5 +70,5 @@ The checks verify technical properties only. They do not approve religious accur
 ## Repository
 - Local Git repository: `main`; latest commits are recorded in local Git history.
 - Generated MP4 renders and intermediate frame sequences are intentionally excluded from Git; keep them locally for review.
-- GitHub remote repository has not yet been created or connected.
-- GitHub Actions workflow: `.github/workflows/quality.yml`.
+- GitHub remote: `https://github.com/darricochef-svg/little-hearts-quran-stories`.
+- GitHub Actions workflow: `.github/workflows/quality.yml`; pushes to `main` trigger the quality workflow.

@@ -1,21 +1,22 @@
 stage,status,blocker_or_next_action,public_action
 Project scaffold,complete,Project folders and production files are in place,no
-Git repository,remote_main_pushed_verified,origin/main verified against local HEAD after push; repository visibility not checked,no
+Git repository,remote_main_pushed_verified,Local HEAD must be compared to origin/main after this change,no
 Agent workflow,configured,AGENTS.md defines specialist roles and strict religious and publishing gates; no extra paid agents installed,no
 Arabic/English script,draft,Qualified religious review and fluent Arabic review required,no
-Storyboard prompts,complete,Current six-scene structure still needs human visual review,no
-Subtitles,automated_structure_pass,Six bilingual cues pass sequential timing, non-overlap, Arabic/English presence and 63.13-second endpoint checks; human wording/readability review required,no
-Scene images,refreshed_draft,Current six scene assets need human visual review,no
-Scene backup,complete,Previous six scene assets remain preserved in backup folder,no
-Arabic narration,variable_timing_candidate,Variable candidate removes long 5–6 second gaps; four short 0.50–0.61 second quiet intervals remain; listen and review Arabic,no
-FFmpeg,available_via_CapCut,CapCut-bundled FFmpeg verified; AMD H264 encoder tested,no
-Video render,compressed_variable_candidate,63.13-second 1920x1080 H264 candidate at 6.85 MiB; full decode and audio/video/subtitle streams pass,no
-Automated technical QC,pass_container_checks,71.50-second existing draft and 63.13-second compressed candidate pass technical checks; human approval remains,no
-Audio quality check,short_pauses_remain,Variable track has four quiet intervals of 0.50–0.61 seconds; listen for natural cadence and adjust if needed,no
-Visual quality check,pending,Illustrated scenes use camera movement but are not full character animation; human review required,no
-Religious review,pending,Qualified reviewer must verify source map, script, exact dua and translation,no
-Azure Speech credentials,blocked_key_missing,AZURE_SPEECH_REGION is set but AZURE_SPEECH_KEY is not; configure key locally without sharing it,no
-YouTube authorization,not_started,Channel account/API authorization not required for this private production review,no
-Upload/publication,approval_required,Do not upload or change public channel settings without an explicit current owner command,yes
-Character dialogue prototype,technical_prototype_pass,7.42-second dialogue prototype verified; audio-energy mouth motion is not phoneme-accurate lip-sync,no
-Character voice system,profiles_validated,Distinct Arabic voice profiles pass configuration validation; generated provider audio still needs review,no
+Storyboard prompts,updated_draft,Revised symbolic direction now implemented in scene generator; human review still required,no
+Subtitles,automated_structure_pass,Six bilingual cues pass timing and structure; human wording/readability review required,no
+Scene images,refreshed_draft,Scenes 03–05 regenerated without whale or literal swallowing; 9 technical checks pass; human visual and child-suitability review required,no
+Scene backup,complete,Original six scene PPMs preserved in assets/scenes/backup-before-art-refresh,no
+Visual-only preview,technical_pass,18-second silent H264 1080p preview fully decoded; not final episode and contains no audio or subtitles,no
+Arabic narration,stale_candidate,Existing ten Azure clips predate revised script; do not use for release; regenerate after secure Azure key setup,no
+FFmpeg,available_via_winget,FFmpeg 9.0.2 and ffprobe verified via winget path,no
+Video render,old_candidate_preserved,63.13-second master candidate remains unchanged and contains old visual; rebuild only after audio and visual approvals,no
+Automated technical QC,pass_local_checks,Scene QC 9/9; subtitle/voice validators and all JS syntax pass; latest GitHub Actions run pending,no
+Audio quality check,short_pauses_remain,Four quiet intervals 0.50–0.61 seconds require human listening; do not auto-trim,no
+Visual quality check,review_pending,New symbolic stills spot-checked; qualified visual and child-suitability approval still required,no
+Religious review,pending,Qualified reviewer must verify source map script exact dua and translation,no
+Azure Speech credentials,blocked_key_missing,AZURE_SPEECH_REGION set but AZURE_SPEECH_KEY missing; configure securely on workstation only,no
+YouTube authorization,not_started,Not needed for private production review,no
+Upload/publication,approval_required,Do not upload or change public channel settings without explicit current owner command,yes
+Character dialogue prototype,technical_prototype_pass,Audio-energy mouth motion is not phoneme-accurate lip-sync,no
+Character voice system,profiles_validated,Distinct Arabic voice profiles pass configuration validation; generated provider audio requires fluent Arabic review,no

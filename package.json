@@ -9,6 +9,8 @@
     "subtitles:validate": "node tools/validate-subtitles.mjs",
     "voices:generate:azure": "node tools/generate-azure-voice-candidates.mjs",
     "voices:qc:azure": "node tools/qc-azure-voice-candidates.mjs",
+    "scenes:validate": "node tools/validate-scenes.mjs",
+    "video:build:visual-review": "node tools/build-visual-review.mjs",
     "video:build": "node tools/build-video.mjs",
     "video:qc": "node tools/automated-qc.mjs",
     "video:qc:animated": "node tools/automated-qc-animated.mjs",

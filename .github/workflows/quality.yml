@@ -22,6 +22,8 @@ jobs:
         run: npm run voices:validate
       - name: Validate bilingual subtitle structure and timing
         run: npm run subtitles:validate
+      - name: Validate generated scene assets
+        run: npm run scenes:validate
       - name: Check JavaScript syntax
         shell: bash
         run: |
